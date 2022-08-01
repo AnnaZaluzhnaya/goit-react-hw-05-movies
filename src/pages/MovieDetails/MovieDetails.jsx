@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
 import { showMoviesDetails } from 'services/moviesAPI';
+import {BiArrowBack} from "react-icons/bi"
 
 const MovieDetails = () => {
     const [movieDetails, setMovieDetails] = useState([]);
@@ -23,11 +24,15 @@ const MovieDetails = () => {
     return(
         <div>
             <Link to={location?.state?.from ?? '/'}>
-            <button type="button">Back</button>
+            <button type="button">  <span>
+                <BiArrowBack/>
+            </span>  
+            Back 
+            </button>
             </Link>
 
             <div>
-                <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={original_title}/>
+                <img src={`https://image.tmdb.org/t/p/w400/${poster_path}`} alt={original_title}/>
                 <h1>{original_title} ({release_date?.slice(0, 4)})</h1>
                 <p>User Score: {Math.round(vote_average*10)}%</p>
                 <h2>Overview</h2>
@@ -40,10 +45,10 @@ const MovieDetails = () => {
                 <h3>Additional information</h3>
                 <ul>
                     <li>
-                        <Link to="cast" state={{from:location?.state?.from ?? '/'}}>Cast</Link>
+                        <Link to="cast" state={{from: location.state ? location.state.from : '/'}}>Cast</Link>
                     </li>
                     <li>
-                        <Link to="reviews" state={{from:location?.state?.from ?? '/'}}>Reviews</Link>
+                        <Link to="reviews" state={{from: location.state ? location.state.from : '/'}}>Reviews</Link>
                     </li>
                 </ul>
                 <Outlet/>

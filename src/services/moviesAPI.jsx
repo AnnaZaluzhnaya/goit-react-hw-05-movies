@@ -21,6 +21,16 @@ export const showMoviesDetails = async (movieId) => {
         response => response.data
       );
 }
-        
-        
+
+export const showMoviesCredits = async (movieId) => {
+  return axios(`${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}`).then(
+    response => response.data
+  );
+}
+
+export const showMoviesReviews = async (movieId) => {
+  return axios(`${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}`).then(
+    response => response.data
+  );
+}
 
