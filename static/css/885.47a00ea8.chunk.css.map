@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/885.47a00ea8.chunk.css","mappings":"AAAA,qBACI,WAEJ,CAEA,uBACI,aACJ","sources":["pages/Home/Home.module.css"],"sourcesContent":[".wrapper{\n    margin: 25px;\n    \n}\n\n.homeTitle{\n    color:rgb(222, 68, 68);\n}"],"names":[],"sourceRoot":""}
