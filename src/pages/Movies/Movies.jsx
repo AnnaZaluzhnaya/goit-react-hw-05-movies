@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
-import { MdImageSearch } from 'react-icons/md';
+import { BiSearchAlt } from 'react-icons/bi';
 import {showSearchMovies} from 'services/moviesAPI';
-// import PopularMoviesList from 'components/PopularMoviesList';
-// import style from './Movies.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import style from './Movies.module.css';
+
+
 
 const Movies = () => {
     const [enteredValue, setEnteredValue] = useState(null);
@@ -36,25 +37,28 @@ const Movies = () => {
 
     
     return (
-        <div>
-        <form onSubmit={handleSubmit} >
+        <div >
+            <div className={style.searchbar}>
+        <form className={style.searchForm} onSubmit={handleSubmit} >
             <input
+            className={style.SearchInput}
             name="query"
             type="text"
             placeholder="Search movies"
             autoFocus
             />
-            <button type="submit" >
+            <button className={style.searchButton} type="submit" >
             <span >
-                <MdImageSearch />
+                <BiSearchAlt/>
             </span>
             </button>
         </form>
+        </div>
         
         <ul>
         {enteredValue && enteredValue.results.map(movie => (
-            <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`}
+            <li className={style.searchList}key={movie.id}>
+                <Link className={style.searchMoviesLink}to={`/movies/${movie.id}`}
                 state={{ from: location }}>{movie.title}
                 </Link>
             </li>
@@ -64,6 +68,14 @@ const Movies = () => {
     );
 };
 
+Movies.propTypes = {
+    movie: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+        }),
+    ),
+};
 
 
 export default Movies;

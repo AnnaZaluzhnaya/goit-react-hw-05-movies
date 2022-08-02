@@ -1,4 +1,6 @@
 import {Link, useLocation} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import style from './PopularMoviesList.module.css';
 
 
 
@@ -7,8 +9,8 @@ const PopularMoviesList = ({movies}) => {
 
  return movies.map(movie => {
     return (
-        <li key={movie.id}>
-            <Link to={`movies/${movie.id}`} state={{ from: location }}>
+        <li className={style.popularList} key={movie.id}>
+            <Link className={style.popularListLink}to={`movies/${movie.id}`} state={{ from: location }}>
             {movie.title}
             </Link>
         </li>
@@ -16,4 +18,14 @@ const PopularMoviesList = ({movies}) => {
  });
 
 };
- export default PopularMoviesList;
+
+PopularMoviesList.propTypes = {
+    movies: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+        }),
+    ),
+};
+
+export default PopularMoviesList;

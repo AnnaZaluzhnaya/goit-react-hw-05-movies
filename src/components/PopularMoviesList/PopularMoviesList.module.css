@@ -1,0 +1,23 @@
+.popularList{
+    margin-bottom: 15px;
+    list-style-type: square;
+    
+}
+
+.popularListLink{
+    text-decoration: none;
+    border: 2px solid rgb(222, 68, 68);
+    border-radius: 5px;
+    box-shadow: 0 10px 15px rgb(222, 68, 68), 0 5px 5px rgb(221, 196, 212);
+    background-color: rgb(221, 196, 212);
+    font-weight: bold;
+    box-shadow: inset;
+    padding: 3px;
+    font-size: 18px;
+    
+}
+
+.popularListLink:hover,
+.popularListLink:focus{
+    color:rgb(222, 68, 68);
+}

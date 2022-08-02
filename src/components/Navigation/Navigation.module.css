@@ -1,0 +1,25 @@
+.nav{
+    padding: 25px;
+    font-size: larger;
+    border: 2px solid rgb(222, 68, 68);
+    box-shadow: inset 2px 2px 5px rgba(216, 77, 77, 0.5), 1px 1px 5px rgb(215, 135, 135);
+}
+
+.link{
+    margin-right: 20px;
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+    
+    
+}
+
+.active{
+    color:rgb(222, 68, 68);
+    font-weight: bold;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+
+
