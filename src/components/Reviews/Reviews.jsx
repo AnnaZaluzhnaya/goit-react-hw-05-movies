@@ -14,7 +14,7 @@ const Reviews = () => {
     }, [movieId]);
     
     return reviews && reviews.total_results === 0 ? (
-        <p>Sorry,there are no reviews for this movie, your review will be the first </p>
+        <p className={style.detailsMessage}>Sorry,there are no reviews for this movie, your review will be the first </p>
         ) : (
         <ul className={style.reviewsList}>
             {reviews &&

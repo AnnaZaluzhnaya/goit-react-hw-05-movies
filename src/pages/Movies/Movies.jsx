@@ -9,9 +9,9 @@ import style from './Movies.module.css';
 
 
 const Movies = () => {
-    const [enteredValue, setEnteredValue] = useState(null);
+    const [searchМovie, setSearchМovie] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
-    const getQuery = searchParams.get('query');
+    const query = searchParams.get('query');
     const location = useLocation();
 
     const handleSubmit = event => {
@@ -30,11 +30,8 @@ const Movies = () => {
     };
 
     useEffect(() => {
-        if (getQuery === ''){
-            return;
-        }
-        getQuery && showSearchMovies(getQuery).then(movie => setEnteredValue(movie));
-    },[getQuery]);
+        query && showSearchMovies(query).then(movie => setSearchМovie(movie));
+    },[query]);
 
     
     return (
@@ -57,13 +54,14 @@ const Movies = () => {
         </div>
         
         <ul>
-        {enteredValue && enteredValue.results.map(movie => (
+        {searchМovie && searchМovie.results.map(movie => (
             <li className={style.searchList}key={movie.id}>
                 <Link className={style.searchMoviesLink}to={`/movies/${movie.id}`}
                 state={{ from: location }}>{movie.title}
                 </Link>
             </li>
         ))}
+        {searchМovie && searchМovie.total_results === 0 && (Notiflix.Notify.warning("There are no movies matching your query!"))}
         </ul>
         </div>
     );

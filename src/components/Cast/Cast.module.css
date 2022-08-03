@@ -30,3 +30,8 @@
 .castCharacterS{
     font-weight: bold;
 }
+
+.detailsMessage{
+    color: red;
+    font-size: larger;
+}

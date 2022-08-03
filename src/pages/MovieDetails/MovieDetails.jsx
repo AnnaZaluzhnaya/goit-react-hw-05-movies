@@ -20,6 +20,8 @@ const MovieDetails = () => {
         release_date,
         vote_average,
     } = movieDetails;
+
+    const backLink = location.state ? location.state.from : '/';
     
     useEffect(() => {
         showMoviesDetails(movieId).then(details => setMovieDetails(details));
@@ -27,7 +29,7 @@ const MovieDetails = () => {
 
     return(
         <div >
-            <Link className={style.backLink} to={location?.state?.from ?? '/'}>
+            <Link className={style.backLink} to={backLink}>
             <button className={style.backBtn} type="button">  <span className={style.iconBtn}>
                 <BiArrowBack/>
             </span>  
@@ -35,7 +37,9 @@ const MovieDetails = () => {
             </button>
             </Link>
             <div className={style.movieDescription} >
-                <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={original_title}/>
+                <img src={ poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` 
+                : 'https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?b=1&k=20&m=1216251206&s=170667a&w=0&h=z0hxu_BaI_tuMjMneE_APbnx_-R2KGPXgDjdwLw5W7o='} 
+                alt={original_title}/>
                 <h1 className={style.originalTitle}>{original_title} ({release_date?.slice(0, 4)})</h1>
                 <p className={style.userScore}>User Score: {Math.round(vote_average*10)}%</p>
                 <h2 className={style.detailsTitle}>Overview</h2>
@@ -49,10 +53,10 @@ const MovieDetails = () => {
                 <ul className={style.detailsList}>
                 
                     <li className={style.detailsItem}>
-                    <Link className={style.detailsLink} to="cast" state={{from: location.state ? location.state.from : '/'}}>Cast</Link>
+                    <Link className={style.detailsLink} to="cast" state={{from: backLink}}>Cast</Link>
                     </li>
                     <li className={style.detailsItem}>
-                    <Link className={style.detailsLink} to="reviews" state={{from: location.state ? location.state.from : '/'}}>Reviews</Link>
+                    <Link className={style.detailsLink} to="reviews" state={{from: backLink}}>Reviews</Link>
                     </li>
                 </ul>
                 <Outlet/>

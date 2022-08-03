@@ -14,3 +14,8 @@
     font-weight: 300;
    font-style: italic;
 }
+
+.detailsMessage{
+    color: red;
+    font-size: larger;
+}
