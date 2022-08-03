@@ -13,7 +13,7 @@ export const showPopularMovies = async () => {
 export const showSearchMovies = async (name) => {
     return axios(`${BASE_URL}/search/movie?api_key=${KEY}&page=1&query=${name}`).then(
         response => response.data
-      );
+    );
 }
 
 export const showMoviesDetails = async (movieId) => {

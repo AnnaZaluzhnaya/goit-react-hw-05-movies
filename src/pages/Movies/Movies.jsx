@@ -26,6 +26,7 @@ const Movies = () => {
             Notiflix.Notify.failure("Please,check the correct spelling of the movie title and try again");
             return;
         }
+
     };
 
     useEffect(() => {

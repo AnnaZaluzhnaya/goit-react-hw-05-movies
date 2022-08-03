@@ -1,0 +1,16 @@
+.reviewsList{
+    list-style: none;
+    
+}
+
+.reviewsName{
+    font-size: 18px;
+    color: rgb(222, 68, 68);
+    text-decoration: underline;
+}
+
+.reviewsText{
+    font-size: 18px;
+    font-weight: 300;
+   font-style: italic;
+}

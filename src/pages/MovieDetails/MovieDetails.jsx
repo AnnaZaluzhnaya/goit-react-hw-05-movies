@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
 import { showMoviesDetails } from 'services/moviesAPI';
 import {BiArrowBack} from "react-icons/bi";
+
+
 import PropTypes from 'prop-types';
 import style from './MovieDetails.module.css'
 
@@ -34,22 +36,23 @@ const MovieDetails = () => {
             </Link>
             <div className={style.movieDescription} >
                 <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={original_title}/>
-                <h1>{original_title} ({release_date?.slice(0, 4)})</h1>
-                <p>User Score: {Math.round(vote_average*10)}%</p>
-                <h2>Overview</h2>
-                <p>{overview}</p>
-                <h2>Genres</h2>
-                <p>{genres?.map(genre => genre.name).join('/')}</p>
+                <h1 className={style.originalTitle}>{original_title} ({release_date?.slice(0, 4)})</h1>
+                <p className={style.userScore}>User Score: {Math.round(vote_average*10)}%</p>
+                <h2 className={style.detailsTitle}>Overview</h2>
+                <p className={style.detailsText}>{overview}</p>
+                <h2 className={style.detailsTitle}>Genres</h2>
+                <p className={style.detailsText}>{genres?.map(genre => genre.name).join('/')}</p>
             </div>
 
-            <div>
-                <h3>Additional information</h3>
-                <ul>
-                    <li>
-                        <Link to="cast" state={{from: location.state ? location.state.from : '/'}}>Cast</Link>
+            <div className={style.detailsDescription}>
+                <h2 className={style.detailsTitle}>Additional information</h2>
+                <ul className={style.detailsList}>
+                
+                    <li className={style.detailsItem}>
+                    <Link className={style.detailsLink} to="cast" state={{from: location.state ? location.state.from : '/'}}>Cast</Link>
                     </li>
-                    <li>
-                        <Link to="reviews" state={{from: location.state ? location.state.from : '/'}}>Reviews</Link>
+                    <li className={style.detailsItem}>
+                    <Link className={style.detailsLink} to="reviews" state={{from: location.state ? location.state.from : '/'}}>Reviews</Link>
                     </li>
                 </ul>
                 <Outlet/>

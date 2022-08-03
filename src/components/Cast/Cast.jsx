@@ -22,9 +22,9 @@ const Cast = () => {
             <ul className={style.castList}>
                 {cast && cast.map(({id,profile_path,original_name,name,character}) => (
                     <li className={style.castItem} key={id}>
-                        <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={original_name} width="300"/>
-                        <h3>{name}</h3>
-                        <p>Character:<br/>{character}</p>
+                        <img className={style.movieImg} src={`https://image.tmdb.org/t/p/w200${profile_path}`} alt={original_name}/>
+                        <h3 className={style.castName}>{name}</h3>
+                        <p className={style.castCharacter}><span className={style.castCharacterS}>Character:</span><br/>{character}</p>
                     </li>
                 ))}
             </ul>

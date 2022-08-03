@@ -9,4 +9,24 @@
 .castItem{
     text-align: center;
     list-style: none;
+    border:2px solid rgb(222, 68, 68);
+    transition: 1s;
+    box-shadow: 0 10px 15px rgb(222, 68, 68), 0 5px 5px rgb(221, 196, 212);
+}
+
+.castItem:hover{
+    transform: scale(0.9);
+}
+
+.castName{
+    color: rgb(222, 68, 68);
+    font-size: 25px;
+}
+
+.castCharacter{
+    font-size: 20px;
+}
+
+.castCharacterS{
+    font-weight: bold;
 }
