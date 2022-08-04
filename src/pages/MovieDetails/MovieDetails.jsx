@@ -22,6 +22,7 @@ const MovieDetails = () => {
     } = movieDetails;
 
     const backLink = location.state ? location.state.from : '/';
+    const defaultImage ='https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?b=1&k=20&m=1216251206&s=170667a&w=0&h=z0hxu_BaI_tuMjMneE_APbnx_-R2KGPXgDjdwLw5W7o=';
     
     useEffect(() => {
         showMoviesDetails(movieId).then(details => setMovieDetails(details));
@@ -37,8 +38,7 @@ const MovieDetails = () => {
             </button>
             </Link>
             <div className={style.movieDescription} >
-                <img src={ poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` 
-                : 'https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?b=1&k=20&m=1216251206&s=170667a&w=0&h=z0hxu_BaI_tuMjMneE_APbnx_-R2KGPXgDjdwLw5W7o='} 
+                <img src={ poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : defaultImage} 
                 alt={original_title}/>
                 <h1 className={style.originalTitle}>{original_title} ({release_date?.slice(0, 4)})</h1>
                 <p className={style.userScore}>User Score: {Math.round(vote_average*10)}%</p>

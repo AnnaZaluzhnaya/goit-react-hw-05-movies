@@ -8,6 +8,7 @@ import style from './Cast.module.css'
 const Cast = () => {
     const [cast, setCast] = useState([]);
     const {movieId} = useParams();
+    const defaultImage ='https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?b=1&k=20&m=1216251206&s=170667a&w=0&h=z0hxu_BaI_tuMjMneE_APbnx_-R2KGPXgDjdwLw5W7o=';
 
     useEffect(() => {
         showMoviesCredits(movieId).then(movie => setCast(movie.cast))
@@ -22,7 +23,7 @@ const Cast = () => {
             <ul className={style.castList}>
                 {cast && cast.map(({id, profile_path, original_name,name,character}) => (
                     <li className={style.castItem} key={id}>
-                        <img className={style.movieImg} src={profile_path ? `https://image.tmdb.org/t/p/w200${profile_path}` : 'https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?b=1&k=20&m=1216251206&s=170667a&w=0&h=z0hxu_BaI_tuMjMneE_APbnx_-R2KGPXgDjdwLw5W7o='} 
+                        <img className={style.movieImg} src={profile_path ? `https://image.tmdb.org/t/p/w200${profile_path}` : defaultImage} 
                         alt={original_name}/>
                         <h3 className={style.castName}>{name}</h3>
                         <p className={style.castCharacter}><span className={style.castCharacterS}>Character:</span><br/>{character}</p>
